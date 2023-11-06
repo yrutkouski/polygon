@@ -1,8 +1,25 @@
 import {useContext} from 'react';
-import {PointsContext} from '../context';
+import {PolygonsContext, CanvasRefContext} from '../context';
+import {ACTION} from '../reducer';
 
-export const Sides = () => {
-  const [points] = useContext(PointsContext);
+export const Sides = ({polygonId}) => {
+  const [polygons, dispatch] = useContext(PolygonsContext);
+  const canvasRef = useContext(CanvasRefContext);
+
+  const points = polygons.find(polygon => polygon.id === polygonId).points;
+
+  const handlePointAdd = index => e => {
+    let boundCan = canvasRef.current.getBoundingClientRect();
+    let x = e.clientX - boundCan.x;
+    let y = e.clientY - boundCan.y;
+
+    dispatch({
+      type: ACTION.VERTEX_ADD,
+      id: polygonId,
+      vertexIndex: index,
+      newVertexPoint: `${x},${y}`
+    });
+  };
 
   return (
     <>
@@ -14,6 +31,7 @@ export const Sides = () => {
         return (
           <g
             key={coordinates}
+            onClick={handlePointAdd(index)}
           >
             <line
               key={coordinates}
@@ -22,7 +40,7 @@ export const Sides = () => {
               x2={x2}
               y2={y2}
               stroke="black"
-              strokeWidth="2"
+              strokeWidth="3"
             />
           </g>
         );

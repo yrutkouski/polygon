@@ -1,33 +1,44 @@
 import {useCallback, useState, useContext, useEffect, useRef} from 'react';
-import { PointsContext } from '../context';
+import {PolygonsContext, CanvasRefContext} from '../context';
+import {ACTION} from '../reducer';
 
-export const Vertices = ({ canvasRef }) => {
-  const [points, setPoints] = useContext(PointsContext);
+export const Vertices = ({polygonId}) => {
+  const [polygons, dispatch] = useContext(PolygonsContext);
+  const canvasRef = useContext(CanvasRefContext);
+
+  const points = polygons.find(polygon => polygon.id === polygonId).points;
+
   const [draggable, setDraggable] = useState({});
   const abortControllerRef = useRef(new AbortController());
 
   useEffect(() => () => {
-      abortControllerRef.current.abort();
-    }, []);
+    abortControllerRef.current.abort();
+  }, []);
 
-  const handlePointDelete = coordinates => () => {
-    setPoints(points.filter(p => p !== coordinates));
+  const handleVertexDelete = vertexIndex => () => {
+    dispatch({
+      type: ACTION.VERTEX_DELETE,
+      id: polygonId,
+      vertexIndex
+    });
   };
 
-  const handlePointMove = useCallback(index => () => {
+  const handleVertexMove = useCallback(index => () => {
     abortControllerRef.current = new AbortController();
-    setDraggable({ index, x: points[index].split(',')[0], y: points[index].split(',')[1]});
+    setDraggable({index, x: points[index].split(',')[0], y: points[index].split(',')[1]});
 
     document.addEventListener('mousemove',
       e => {
         let boundCan = canvasRef.current.getBoundingClientRect();
         let x = e.clientX - boundCan.x;
         let y = e.clientY - boundCan.y;
-        setDraggable(prev => ({ index: prev.index, x, y}));
+        setDraggable(prev => ({index: prev.index, x, y}));
 
-        setPoints(prev => {
-          prev[index] = `${x},${y}`;
-          return [...prev];
+        dispatch({
+          type: ACTION.VERTEX_UPDATE,
+          id: polygonId,
+          vertexIndex: index,
+          updatedVertexPoint: `${x},${y}`
         });
       },
       {signal: abortControllerRef.current.signal});
@@ -35,20 +46,20 @@ export const Vertices = ({ canvasRef }) => {
       setDraggable({index: null, x: null, y: null})
       abortControllerRef.current.abort();
     });
-  }, [setDraggable, setPoints, points, canvasRef, abortControllerRef]);
+  }, [dispatch, polygonId, setDraggable, points, canvasRef, abortControllerRef]);
 
   return (
     <>
       {points.map((coordinates, index) => (
         <g
           key={coordinates}
-          onDoubleClick={handlePointDelete(coordinates)}
-          onMouseDown={handlePointMove(index)}
+          onDoubleClick={handleVertexDelete(index)}
+          onMouseDown={handleVertexMove(index)}
         >
           <circle
             cx={draggable.index === index ? draggable.x : coordinates.split(',')[0]}
             cy={draggable.index === index ? draggable.y : coordinates.split(',')[1]}
-            r={4}
+            r={5}
           />
         </g>
       ))}

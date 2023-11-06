@@ -1,3 +1,5 @@
 export * from './Vertices'
-export * from './Polygon'
+export * from './Polygons'
 export * from './Sides'
+export * from './Panel'
+export * from './Whiteboard'

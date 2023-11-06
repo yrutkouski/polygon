@@ -15,3 +15,8 @@ export const getPolygonPoints = (numVertices, side = 100) => {
 
   return points;
 }
+
+export const generateId = () => {
+  const randomID = Math.floor(Math.random() * 1000000);
+  return randomID.toString().padStart(6, '0');
+}

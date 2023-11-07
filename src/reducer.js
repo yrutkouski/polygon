@@ -1,4 +1,5 @@
 export const ACTION = {
+  INIT: 'INIT',
   ADD: 'ADD',
   DELETE: 'DELETE',
   MOVE: 'MOVE',
@@ -9,8 +10,10 @@ export const ACTION = {
 
 export const polygonsReducer = (polygons, action) => {
   switch (action.type) {
-    case ACTION.ADD: {
-      return [...polygons, action.points]
+    case ACTION.INIT: {
+      return action.polygons;
+    }case ACTION.ADD: {
+      return [...polygons, action.points];
     }
     case ACTION.DELETE: {
       return polygons.filter((_, i) => i !== action.index);
@@ -21,7 +24,7 @@ export const polygonsReducer = (polygons, action) => {
           return {...polygon, points: action.points};
         }
         return polygon;
-      })
+      });
     }
     case ACTION.VERTEX_ADD: {
       return polygons.map(polygon => {

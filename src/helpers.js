@@ -20,3 +20,7 @@ export const generateId = () => {
   const randomID = Math.floor(Math.random() * 1000000);
   return randomID.toString().padStart(6, '0');
 }
+
+export const isEmpty = obj => {
+  return Object.keys(obj).length === 0;
+}

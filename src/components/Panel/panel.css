@@ -1,0 +1,15 @@
+.panel {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.panel__legend {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+
+  & p, & h4 {
+    margin: 3px 0;
+  }
+}

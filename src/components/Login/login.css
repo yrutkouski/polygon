@@ -1,0 +1,25 @@
+.login-form {
+  width: 340px;
+  min-height: 210px;
+  padding: 10px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-form__input {
+  width: 240px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.login-form__buttons-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form__error-message {
+  color: red;
+}

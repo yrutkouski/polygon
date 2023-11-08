@@ -11,10 +11,5 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
   "browserslist": ["defaults"]
 }

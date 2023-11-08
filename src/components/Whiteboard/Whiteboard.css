@@ -1,0 +1,32 @@
+.whiteboard {
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+}
+
+.whiteboard__controls {
+  display: flex;
+  align-items: center;
+
+  & label {
+    margin-left: 5px;
+  }
+
+  & button {
+    margin-left: 10px;
+  }
+}
+
+.whiteboard__canvas-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 30px 0;
+}
+
+.whiteboard__canvas {
+  background-color: white;
+  background-image: repeating-radial-gradient(rgba(0, 0, 0, 0.1) 0, rgba(0, 0, 0, 0.1) 1px, transparent 0px, transparent 20px);
+  background-size: 10px 10px;
+}

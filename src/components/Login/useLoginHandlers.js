@@ -29,12 +29,12 @@ const useLoginHandlers = () => {
       return;
     }
 
+    const matchedUser = users.find(
+      (user) => user.username === username,
+    );
+
     switch (action) {
       case FORM_ACTION.LOGIN: {
-        const matchedUser = users.find(
-          (user) => user.username === username && user.password === password,
-        );
-
         if (matchedUser) {
           logUser(matchedUser);
           setUser(matchedUser);
@@ -46,9 +46,13 @@ const useLoginHandlers = () => {
       case FORM_ACTION.SIGNUP: {
         const newUser = { username, password };
 
-        saveUser([...users, newUser]);
-        logUser(newUser);
-        setUser(newUser);
+        if (matchedUser) {
+          setError('User already exists');
+        } else {
+          saveUser([...users, newUser]);
+          logUser(newUser);
+          setUser(newUser);
+        }
         break;
       }
       default: {

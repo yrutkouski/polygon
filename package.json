@@ -9,7 +9,16 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test": "react-scripts test"
   },
-  "browserslist": ["defaults"]
+  "browserslist": [
+    "defaults"
+  ],
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.0",
+    "eslint-config-airbnb": "^19.0.4"
+  }
 }

@@ -4,7 +4,7 @@ import { PolygonsContext, UserContext } from './utils/context';
 import { isEmpty } from './utils/helpers';
 import { polygonsReducer } from './utils/reducer';
 import { useUser } from './utils/hooks';
-import './App.css';
+import './app.css';
 
 const App = () => {
   const [polygons, dispatch] = useReducer(polygonsReducer, []);

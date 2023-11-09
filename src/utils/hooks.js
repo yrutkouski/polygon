@@ -33,5 +33,5 @@ export const useCurrentCoordinate = () => {
 export const usePoints = () => {
   const { polygons } = useContext(PolygonsContext);
 
-  return (polygonId) => polygons.find((polygon) => polygon.id === polygonId).points || [];
+  return (polygonId) => polygons.find((polygon) => polygon.id === polygonId)?.points || [];
 };

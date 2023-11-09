@@ -10,7 +10,7 @@ const useSideHandlers = (polygonId) => {
 
   const points = getPoints(polygonId);
 
-  const handlePointAdd = (index) => (e) => {
+  const handleVertexAdd = (index) => (e) => {
     const { x, y } = getCurrentCoordinate(e);
 
     if (points.some((point) => point.x === x && point.y === y)) return;
@@ -25,7 +25,7 @@ const useSideHandlers = (polygonId) => {
 
   return {
     points,
-    handlePointAdd,
+    handleVertexAdd,
   };
 };
 

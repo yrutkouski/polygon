@@ -2,7 +2,7 @@ import React from 'react';
 import useSideHandlers from './useSideHandlers';
 
 const Sides = ({ polygonId }) => {
-  const { points, handlePointAdd } = useSideHandlers(polygonId);
+  const { points, handleVertexAdd } = useSideHandlers(polygonId);
 
   return (
     <>
@@ -14,7 +14,7 @@ const Sides = ({ polygonId }) => {
         return (
           <g
             key={`${x1},${y1}-${x2},${y2}`}
-            onClick={handlePointAdd(index)}
+            onClick={handleVertexAdd(index)}
           >
             <line
               x1={x1}

@@ -53,7 +53,10 @@ const useWhiteboardHandlers = () => {
 
   const handleWhiteboardDelete = () => {
     setWhiteboardIds((prev) => prev.filter((id) => id !== selected));
-    if (selected === currentWhiteboardId) setCurrentWhiteboardId(null);
+    if (selected === currentWhiteboardId) {
+      setCurrentWhiteboardId(null);
+      setSelected(null);
+    }
 
     const updatedUserWhiteboards = allWhiteboards[username].filter(({ id }) => id !== selected);
     const updatedAllWhiteboards = {

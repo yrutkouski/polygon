@@ -1,4 +1,4 @@
-Test assignment for Suitsupply
+Polygon implementation based on SVG
 
 ```shell
 npm i
@@ -9,4 +9,4 @@ check localhost:3000
 
 or
 
-https://yrutkouski.github.io/suitsupply-polygon/
+https://yrutkouski.github.io/polygon/

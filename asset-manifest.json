@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/suitsupply-polygon/static/css/main.28bca50c.css",
-    "main.js": "/suitsupply-polygon/static/js/main.34f69dfd.js",
-    "index.html": "/suitsupply-polygon/index.html",
-    "main.28bca50c.css.map": "/suitsupply-polygon/static/css/main.28bca50c.css.map",
-    "main.34f69dfd.js.map": "/suitsupply-polygon/static/js/main.34f69dfd.js.map"
+    "main.css": "/polygon/static/css/main.28bca50c.css",
+    "main.js": "/polygon/static/js/main.34f69dfd.js",
+    "index.html": "/polygon/index.html",
+    "main.28bca50c.css.map": "/polygon/static/css/main.28bca50c.css.map",
+    "main.34f69dfd.js.map": "/polygon/static/js/main.34f69dfd.js.map"
   },
   "entrypoints": [
     "static/css/main.28bca50c.css",
